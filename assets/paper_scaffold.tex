@@ -1,0 +1,114 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If unneeded, please comment it out.
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Your Paper Title Here\thanks{This work was supported in part by Funding Agency under Grant No.~1234567.}}
+
+% Author block configuration:
+% For 1 to 3 authors:
+\author{\IEEEauthorblockN{First Author}
+\IEEEauthorblockA{\textit{Department Name} \\
+\textit{Organization / University}\\
+City, Country \\
+author1@example.com}
+\and
+\IEEEauthorblockN{Second Author}
+\IEEEauthorblockA{\textit{Department Name} \\
+\textit{Organization / University}\\
+City, Country \\
+author2@example.com}
+}
+
+% Alternative for many authors with shared affiliations:
+% \author{\IEEEauthorblockN{First Author\IEEEauthorrefmark{1}, Second Author\IEEEauthorrefmark{2}, and Third Author\IEEEauthorrefmark{1}}
+% \IEEEauthorblockA{\IEEEauthorrefmark{1}Department Name, University Name, City, Country}
+% \IEEEauthorblockA{\IEEEauthorrefmark{2}Research Laboratory, Organization Name, City, Country\\
+% Emails: \{first.author, third.author\}@univ.edu, second.author@org.org}}
+
+\maketitle
+
+\begin{abstract}
+Provide a self-contained, concise abstract summarizing the problem, approach, key quantitative results, and primary conclusions. Do not use math, special characters, symbols, footnotes, or citations in the abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+keyword 1, keyword 2, keyword 3, keyword 4.
+\end{IEEEkeywords}
+
+\section{Introduction}
+Introduce the research problem, motivation, operational context, and real-world significance. Clearly state the limitations of existing approaches and explicitly outline the specific novel contributions of this paper.
+
+\section{Related Work}
+Situate the research within the state of the art. Discuss foundational literature and current solutions, highlighting differences, limitations, and the specific gaps this work addresses \cite{ref_article, ref_conf}.
+
+\section{Methodology}
+Detail the proposed system, model architecture, or experimental framework. Every displayed equation must have a strict justification that directly impacts the paper's output or decision pipeline; omit ornamental or textbook formulations. When adopting an equation from literature, cite the foundational source once at its introduction without repeating the citation in subsequent steps.
+
+Adapted from the generalized formulation in \cite{ref_article}, the core system response directly determining the output state is defined as:
+\begin{equation}
+y(t) = \sum_{k=1}^{K} w_k \cdot x_k(t) + \epsilon(t),
+\label{eq:model}
+\end{equation}
+where $w_k$ denotes the learned weight for feature $k$, $x_k(t)$ is the input signal at time $t$, and $\epsilon(t)$ represents additive noise. The resulting state $y(t)$ directly governs the threshold classification evaluated in Section~\ref{sec:evaluation}. Reference equations directly using \eqref{eq:model} without prefixing ``Eq.'' unless at the beginning of a sentence.
+
+\section{Experimental Evaluation}
+\label{sec:evaluation}
+Describe the experimental setup, datasets, baseline models, performance metrics, and quantitative results.
+
+\begin{table}[htbp]
+\caption{Performance Comparison of Evaluated Architectures}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Method} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score} \\
+\hline
+Baseline Model & 84.2 & 81.5 & 0.828 \\
+Proposed Architecture & \textbf{92.6} & \textbf{90.4} & \textbf{0.915} \\
+\hline
+\end{tabular}
+\label{tab:performance}
+\end{center}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig1.png}}
+\caption{System architecture and processing pipeline overview.}
+\label{fig:pipeline}
+\end{figure}
+
+As shown in Table~\ref{tab:performance} and illustrated in Fig.~\ref{fig:pipeline}, the proposed methodology demonstrates significant performance gains. Note that table captions must appear above tables, while figure captions must appear below figures.
+
+\section{Discussion and Limitations}
+% Structure discussion around four key dimensions:
+% 1. Summary of key findings with concrete metrics.
+% 2. Important conclusions and broader implications for the field.
+% 3. Benefits and advantages of the proposed methodology.
+% 4. Shortcomings, operational constraints, and threats to validity.
+The empirical results demonstrate a notable improvement in F1-score over existing baselines, validating the theoretical framework modeled in \eqref{eq:model}. These findings imply that integrating structured weight regularizations can scale effectively across resource-constrained edge deployments. 
+
+Despite these benefits, several shortcomings must be acknowledged. The model assumes stationary noise $\epsilon(t)$, which may degrade performance under abrupt environmental shifts, and inference latency increases linearly with feature dimension $K$.
+
+\section{Conclusion}
+% Reaffirm contributions, synthesize key conclusions, and propose targeted future research.
+This paper presented a verified architecture that achieves a 9.6\% improvement in classification accuracy. The results establish that direct output modeling provides robust performance guarantees for modern applications. Future research will explore adaptive feature pruning to alleviate computational overhead in ultra-low-power embedded hardware and examine self-supervised training to overcome noise non-stationarity.
+
+\section*{Acknowledgment}
+The authors thank contributors and collaborating institutions. Funding agency details should be placed in the title footnote via \verb|\thanks{}|.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
